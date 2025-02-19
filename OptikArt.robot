@@ -7,6 +7,8 @@ Login
     Input Text    //*[@id="username-5474"]    Ella
     Input Password    //*[@id="user_password-5474"]    J9kKZApe
     Click Button    //*[@id="um-submit-btn"]
+    Page Should Contain    123 456
+    Close Browser
 
 Registration
     Open Browser    https://keprendeles.optikart.hu/register/    firefox
@@ -17,4 +19,38 @@ Registration
     Input Password    //*[@id="confirm_user_password-5473"]    J9kKZApe
     Click Element    //*[@id="um_field_5473_intezmeny_data"]/div[2]/label[1]
     Click Button    //*[@id="um-submit-btn"]
+    Close Browser
+
+Login_empty_username
+    Open Browser    https://keprendeles.optikart.hu/login/    firefox
+    Input Text    //*[@id="username-5474"]    ${EMPTY}
+    Input Password    //*[@id="user_password-5474"]    J9kKZApe
+    Click Button    //*[@id="um-submit-btn"]
+    Element Should Contain    //*[@id="um-error-for-username-5474"]    Please enter your username or email
+    Element Should Contain    //*[@id="um-error-for-user_password-5474"]    Password is incorrect. Please try again.
+    Close Browser
+
+Login_empty_password
+    Open Browser    https://keprendeles.optikart.hu/login/    firefox
+    Input Text    //*[@id="username-5474"]    Ella
+    Input Password    //*[@id="user_password-5474"]    ${EMPTY}
+    Click Button    //*[@id="um-submit-btn"]
+    Element Should Contain    //*[@id="um-error-for-user_password-5474"]    Please enter your password
+    Close Browser
+
+login_empty_credentials
+    Open Browser    https://keprendeles.optikart.hu/login/    firefox
+    Input Text    //*[@id="username-5474"]    ${EMPTY}
+    Input Password    //*[@id="user_password-5474"]    ${EMPTY}
+    Click Button    //*[@id="um-submit-btn"]
+    Element Should Contain    //*[@id="um-error-for-username-5474"]    Please enter your username or email
+    Element Should Contain    //*[@id="um-error-for-user_password-5474"]    Please enter your password
+    Close Browser
+
+login_wrong_username
+    Open Browser    https://keprendeles.optikart.hu/login/    firefox
+    Input Text    //*[@id="username-5474"]    Ela
+    Input Password    //*[@id="user_password-5474"]    J9kKZApe
+    Click Button    //*[@id="um-submit-btn"]
+    Element Should Contain    //*[@id="um-error-for-user_password-5474"]    Password is incorrect. Please try again.
     Close Browser
